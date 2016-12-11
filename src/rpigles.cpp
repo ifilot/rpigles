@@ -275,8 +275,9 @@ void  esMainLoop (CUBE_STATE_T *esContext )
     unsigned int frames = 0;
 
     gettimeofday ( &t1 , &tz );
+    unsigned int count = 0;
 
-    while(1)
+    while(count < 10)
     {
         gettimeofday(&t2, &tz);
         deltatime = (float)(t2.tv_sec - t1.tv_sec + (t2.tv_usec - t1.tv_usec) * 1e-6);
@@ -292,6 +293,7 @@ void  esMainLoop (CUBE_STATE_T *esContext )
             printf("%4d frames rendered in %1.4f seconds -> FPS=%3.4f\n", frames, totaltime, frames/totaltime);
             totaltime -= 2.0f;
             frames = 0;
+	    count++;
         }
     }
 }
