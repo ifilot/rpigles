@@ -38,6 +38,10 @@ public:
         return this->height;
     }
 
+    inline float get_aspect_ratio() const {
+        return (float)this->get_width() / (float)this->get_height();
+    }
+
     inline EGLDisplay get_display() const {
         return this->display;
     }

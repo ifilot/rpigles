@@ -53,7 +53,7 @@ void Display::initialize_opengles() {
 
     // create an EGL rendering context
     this->context = eglCreateContext(this->display, config, EGL_NO_CONTEXT, context_attributes);
-    assert(this->context!=EGL_NO_CONTEXT);
+    assert(this->context != EGL_NO_CONTEXT);
 
     // create an EGL window surface
     success = graphics_get_display_size(0 /* LCD */, &this->width, &this->height);
@@ -91,4 +91,11 @@ void Display::initialize_opengles() {
     // connect the context to the surface
     result = eglMakeCurrent(this->display, this->surface, this->surface, this->context);
     assert(EGL_FALSE != result);
+
+    // set background color
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
+    // enable culling
+    glEnable(GL_CULL_FACE);
+    glEnable(GL_DEPTH_TEST);
 }

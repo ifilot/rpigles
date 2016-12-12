@@ -24,6 +24,14 @@ public:
         return this->m_program;
     }
 
+    inline void link_shader() {
+        glUseProgram(this->m_program);
+    }
+
+    inline void unlink_shader() {
+        glUseProgram(0);
+    }
+
     ~Shader();
 
 private:
