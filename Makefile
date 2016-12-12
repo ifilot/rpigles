@@ -21,7 +21,7 @@ SRCDIR = ./src
 CFLAGS += -I$(SRCDIR)
 
 # add here the source files for the compilation
-SOURCES = rpigles.cpp
+SOURCES = rpigles.cpp display.cpp shader.cpp
 
 # create the obj variable by substituting the extension of the sources
 # and adding a path
@@ -37,7 +37,7 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 	$(CXX) -c -o $@ $< $(CFLAGS)
 
 test: $(BINDIR)/$(EXEC)
-	scp ./bin/$(EXEC) ivo@192.168.2.20:~ && ssh ivo@192.168.2.20 ./$(EXEC)
+	scp -r assets ./bin/$(EXEC) ivo@192.168.2.20:~ && ssh ivo@192.168.2.20 ./$(EXEC)
 
 clean:
 	rm -vf $(BINDIR)/$(EXEC) $(OBJ)
